@@ -1,0 +1,9 @@
+Folder PATH listing for volume UCSC
+Volume serial number is 72C6-E410
+D:.
++---Fidenz-Technologies---Front-end-Assignment
++---WeatherApp
+    +---citycodes
+    ¦   +---migrations
+    ¦   +---templates
+    +---WeatherApp
