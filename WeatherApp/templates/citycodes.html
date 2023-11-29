@@ -1,13 +1,77 @@
 {% extends 'base.html' %}
-{% block title %}cities{% endblock %}
+{% block title %}Weather{% endblock %}
 {% block content %}
-{% for city in cities %}
-<div>
-    <h2>{{ city.CityName }}</h2>
-    <p>City Code: {{ city.CityCode }}</p>
-    <p>Temperature: {{ city.Temp }} °C</p>
-    <p>Status: {{ city.Status }}</p>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/style.css">
+
+<div class="main-container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Weather App</h1>
+        </div>
+    </div>
+    <div id="cities" class="row">
+        {% for city in cities %}
+        <div class="city col-md-5">
+            <div class="card {{ city.weather.0.main|lower }}">
+                <div class="card-body">
+                    <div class="top-part">
+                        <div class="left">
+                            <h2 class="card-title">{{ city.name }}, {{ city.sys.country }}</h2>
+                            <p class="card-text">Weather: {{ city.weather.0.main }}</p>
+                        </div>
+                        <div class="middle">
+                            <p class="card-text">Temperature: {{ city.main.temp }} °C</p>
+                            <p class="card-text">Max Temperature: {{ city.main.temp_max }} °C</p>
+                            <p class="card-text">Min Temperature: {{ city.main.temp_min }} °C</p>
+                            </div>
+                        </div>
+                    <div class="bottom-part">
+                        <div class="left">
+                        <p class="card-text">Pressure: {{ city.main.pressure }} hPa</p>
+                        <p class="card-text">Humidity: {{ city.main.humidity }}%</p>
+                        <p class="card-text">Visibility: {{ city.visibility }} m</p>
+                        </div>
+                        <div class="middle">
+                            <p class="card-text">Wind Speed: {{ city.wind.speed }} m/s</p>
+                        </div>
+                        <div class="right">
+                        <p class="card-text">Sunrise: {{ city.sys.sunrise }}</p>
+                        <p class="card-text">Sunset: {{ city.sys.sunset }}</p>
+                        </div>
+                    </div>
+                    <button class="close btn btn-danger">Close</button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
 </div>
-<hr>
-{% endfor %}
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+    var cities = document.querySelectorAll('.city');
+    cities.forEach(function(city) {
+        city.addEventListener('click', function() {
+            this.classList.add('expanded');
+            this.classList.add('city-expanded');
+            this.classList.remove('col-md-5', 'city');
+            cities.forEach(function(otherCity) {
+                if (otherCity !== city) {
+                    otherCity.style.display = 'none';
+                }
+            });
+        });
+        city.querySelector('.close').addEventListener('click', function(e) {
+            e.stopPropagation();
+            city.classList.remove('expanded');
+            city.classList.add('col-md-5', 'city');
+            city.classList.remove('city-expanded');
+            cities.forEach(function(otherCity) {
+                otherCity.style.display = 'block';
+            });
+        });
+    });
+</script>
 {% endblock %}

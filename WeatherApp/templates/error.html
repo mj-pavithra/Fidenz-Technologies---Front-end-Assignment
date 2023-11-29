@@ -3,24 +3,15 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>My Blog</h1>
+                <h1>ERROR Page</h1>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-8">
-                {% for post in posts %}
-                    <div class="post">
-                        <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-                        <p>{{ post.text|linebreaksbr }}</p>
-                        <p class="date">Created: {{ post.created_date|date:'d-m-Y' }}</p>
-                        <p class="date">Published: {{ post.published_date|date:'d-m-Y' }}</p>
-                    </div>
-                {% endfor %}
-            </div>
+            
             <div class="col-md-4">
                 <div class="sidebar-module">
-                    <h2>My Blog</h2>
-                    <p>Subscribe to my blog to get updates about new posts.</p>
+                    <h2>Error page</h2>
+                    <p>Server side error happens</p>
                 </div>
             </div>
         </div>
