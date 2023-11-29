@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
-{% block title %}cities{% endblock %}
+{% block title %}Weather{% endblock %}
 {% block content %}
 {% for city in cities %}
 <div>
-    <h2>{{ city.CityName }}</h2>
-    <p>City Code: {{ city.CityCode }}</p>
-    <p>Temperature: {{ city.Temp }} °C</p>
-    <p>Status: {{ city.Status }}</p>
+    <h2>{{ city.name }}</h2>
+    <p>City ID: {{ city.id }}</p>
+    <p>Temperature: {{ city.main.temp }} °C</p>
+    <p>Status: {{ city.weather.0.description }}</p>
 </div>
 <hr>
 {% endfor %}
