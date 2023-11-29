@@ -1,0 +1,91 @@
+.city{
+    width: 500px;
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+}
+
+.city-expanded{
+    width: 35vw;
+
+    text-align: center;
+    margin: 20px;
+    padding: 20px;
+    background-color: #f1f1f1;
+}
+
+.cities{
+    margin-left: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
+}
+
+.main-container{
+    margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.city {
+    height: 100%;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+.city .close {
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+.city.expanded {
+    z-index: 10;
+    width: 700px;
+}
+.city.expanded .close {
+    display: block;
+}
+
+.card.sunny {
+    background-image: url('/static/image/sunny.jpg');
+}
+
+.card.cloudy {
+    background-image: url('/static/image/cloudy.jpg');
+}
+
+.card.rainy {
+    background-image: url('/static/image/rainy.jpg');
+}
+
+.top-part{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    padding: 10px;
+    height: 200px;
+    margin: 50px 50px;
+    font-size: 30px;
+}
+
+.bottom-part{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    padding: 10px;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    align-items: center;
+    background-color: rgb(43, 43, 43);
+}
+
+.close{
+    color: rgb(255, 5, 5);
+    font-size: 20px;
+    align-items: center;
+    background-color: rgb(43, 43, 43);
+}
